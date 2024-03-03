@@ -1,5 +1,6 @@
 package com.redemob.cadastro.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import org.springframework.context.event.EventListener;
@@ -18,11 +19,11 @@ public class VerificacaoCadastro {
     }
 
     @EventListener
-    public void handleNovoCadastro(VerificacaoCadastroEvent event) {
+    public void handleNovoCadastro(VerificacaoCadastroEvent event) throws IOException {
         CadastroDto cadastroDto         = (CadastroDto) event.getSource();
         LocalDateTime dataVerificacao   = LocalDateTime.now().plusHours(24);
         cadastroDto.setDataVerificacaoCadastro(dataVerificacao);
-        service.salvar(cadastroDto);
+        service.salvar(cadastroDto, null);
     }
     
 }

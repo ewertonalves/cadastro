@@ -40,13 +40,13 @@ public class Cadastro implements Serializable{
     private String nomeMae;
 
     @Column(name = "CADASTRO_FOTO_ROSTO")
-    private String fotoRosto;
+    private byte[] fotoRosto;
 
     @Column(name = "CADASTRO_FOTO_DOCUMENTO")
-    private String fotoDocumento;
+    private byte[] fotoDocumento;
 
     @Column(name = "CADASTRO_FOTO_COMPROVATE")
-    private String fotoComprovante;
+    private byte[] fotoComprovante;
 
     @Column(name = "CADASTRO_SENHA")
     private String senha;
@@ -117,27 +117,27 @@ public class Cadastro implements Serializable{
 		this.nomeMae = nomeMae;
 	}
 
-	public String getFotoRosto() {
+	public byte[] getFotoRosto() {
 		return this.fotoRosto;
 	}
 
-	public void setFotoRosto(String fotoRosto) {
+	public void setFotoRosto(byte[] fotoRosto) {
 		this.fotoRosto = fotoRosto;
 	}
 
-	public String getFotoDocumento() {
+	public byte[] getFotoDocumento() {
 		return this.fotoDocumento;
 	}
 
-	public void setFotoDocumento(String fotoDocumento) {
+	public void setFotoDocumento(byte[] fotoDocumento) {
 		this.fotoDocumento = fotoDocumento;
 	}
 
-	public String getFotoComprovante() {
+	public byte[] getFotoComprovante() {
 		return this.fotoComprovante;
 	}
 
-	public void setFotoComprovante(String fotoComprovante) {
+	public void setFotoComprovante(byte[] fotoComprovante) {
 		this.fotoComprovante = fotoComprovante;
 	}
 

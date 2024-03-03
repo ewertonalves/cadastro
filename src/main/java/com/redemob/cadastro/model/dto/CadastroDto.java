@@ -15,11 +15,11 @@ public class CadastroDto {
 
     private String nomeMae;
 
-    private String fotoRosto;
+    private byte[] fotoRosto;
 
-    private String fotoDocumento;
+    private byte[] fotoDocumento;
 
-    private String fotoComprovante;
+    private byte[] fotoComprovante;
 
     private String senha;
 
@@ -71,27 +71,27 @@ public class CadastroDto {
 		this.nomeMae = nomeMae;
 	}
 
-	public String getFotoRosto() {
+	public byte[] getFotoRosto() {
 		return this.fotoRosto;
 	}
 
-	public void setFotoRosto(String fotoRosto) {
+	public void setFotoRosto(byte[] fotoRosto) {
 		this.fotoRosto = fotoRosto;
 	}
 
-	public String getFotoDocumento() {
+	public byte[] getFotoDocumento() {
 		return this.fotoDocumento;
 	}
 
-	public void setFotoDocumento(String fotoDocumento) {
+	public void setFotoDocumento(byte[] fotoDocumento) {
 		this.fotoDocumento = fotoDocumento;
 	}
 
-	public String getFotoComprovante() {
+	public byte[] getFotoComprovante() {
 		return this.fotoComprovante;
 	}
 
-	public void setFotoComprovante(String fotoComprovante) {
+	public void setFotoComprovante(byte[] fotoComprovante) {
 		this.fotoComprovante = fotoComprovante;
 	}
 

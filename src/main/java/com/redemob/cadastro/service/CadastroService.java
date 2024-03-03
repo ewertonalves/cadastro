@@ -1,5 +1,6 @@
 package com.redemob.cadastro.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.redemob.cadastro.model.Cadastro;
 import com.redemob.cadastro.model.dto.CadastroDto;
 import com.redemob.cadastro.model.response.MessageResponse;
 import com.redemob.cadastro.repository.CadastroRepository;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CadastroService {
@@ -28,14 +30,20 @@ public class CadastroService {
     private ApplicationEventPublisher eventPublisher;
 
     @Cacheable(cacheNames = "cadastroUsuario", key = "#Cadastro.dataCadastro")
-    public ResponseEntity<MessageResponse> salvar(CadastroDto cadastroDto) {
-
-        Boolean validaCpf = repository.existsByCpf(cadastroDto.getCpf());
+    public ResponseEntity<MessageResponse> salvar(CadastroDto cadastroDto, MultipartFile file) throws IOException {
+        
+        byte[] dadosDaImagem    = file.getBytes();
+        Boolean validaCpf       = repository.existsByCpf(cadastroDto.getCpf());
+        
         if(validaCpf)
             return new ResponseEntity<MessageResponse>(new MessageResponse("O CPF já foi cadastrado!"), HttpStatus.INTERNAL_SERVER_ERROR);
         if(!ValidaCpf.validadoCpf(cadastroDto.getCpf()))
             return new ResponseEntity<MessageResponse>(new MessageResponse("O CPF inválido!"), HttpStatus.INTERNAL_SERVER_ERROR);
+        
+        cadastroDto.setFotoRosto(dadosDaImagem);
+        cadastroDto.setFotoComprovante(dadosDaImagem);
         cadastroDto.setDataCadastro(LocalDateTime.now());
+
         Cadastro cadastro = new Cadastro(cadastroDto);
         repository.save(cadastro);
         eventPublisher.publishEvent(new VerificacaoCadastroEvent(cadastro));

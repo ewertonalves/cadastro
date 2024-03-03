@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.redemob.cadastro.model.Cadastro;
 import com.redemob.cadastro.model.dto.CadastroDto;
@@ -28,10 +29,10 @@ public class CadastroController {
     }
 
     @PostMapping(value = "/save", consumes = "application/json; charset=UTF-8")
-    public ResponseEntity<MessageResponse> salvar(@RequestBody CadastroDto CadastroDto) {
+    public ResponseEntity<MessageResponse> salvar(@RequestBody CadastroDto CadastroDto, MultipartFile file) {
 
         try {
-            return service.salvar(CadastroDto);
+            return service.salvar(CadastroDto, file);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new MessageResponse(e.getMessage()));
         }
