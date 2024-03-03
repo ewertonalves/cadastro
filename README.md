@@ -54,9 +54,9 @@ git clone (https://github.com/seu-usuario/rocket-cadastro.git)
   "dataNascimento": "YYYY-MM-DD",
   "cpf": "123.456.789-00",
   "nomeMae": "Nome da Mãe",
-  "fotoRosto": "URL da foto do rosto",
-  "fotoDocumento": "URL da foto do documento",
-  "fotoComprovante": "URL da foto do comprovante",
+  "fotoRosto": "Base64 da foto do rosto",
+  "fotoDocumento": "Base64 da foto do documento",
+  "fotoComprovante": "Base64 da foto do comprovante",
   "senha": "senha123"
 }
 
